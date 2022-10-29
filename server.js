@@ -39,7 +39,7 @@ app.delete('/home', (request, response) => {
 app.use((request, response) => {
     // response.send("USE-middleware request");
     // response.redirect('https://google.com');
-    response.status(200).json({ javascript: 'json12' });
+    response.status(200).json({ javascript: 'json123' });
 });
 
 
