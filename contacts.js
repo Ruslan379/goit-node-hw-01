@@ -5,6 +5,11 @@ const fs = require('fs').promises; //! АСИНХРОННЫЙ вариант
 
 const path = require('path');
 
+// import { nanoid } from 'nanoid';
+// const nanoid = require('nanoid');
+
+const uniqid = require('uniqid');
+
 
 
 
@@ -135,7 +140,8 @@ async function removeContact(contactId) {
 async function addContact(name, email, phone) {
     //! Создаем НОВЫЙ КОНТАКТ ==> newContact
     const newContact = {
-        id: Date.now(),
+        // id: Date.now(),
+        id: uniqid(),
         name,
         email,
         phone
