@@ -1,5 +1,11 @@
-const { gameGuessNumber } = require("./guess-the-number");
+// const { gameGuessNumber } = require("./guess-the-number");
 
+// gameGuessNumber();
 
-gameGuessNumber();
+const {
+    listContacts,
+    getContactById,
+    removeContact,
+    addContact
+} = require("./contacts");
 

@@ -4,7 +4,7 @@ const path = require('path');
 
 
 //* Раскомментируй и запиши значение
-const contactsPath = path.resolve('contacts.js');
+const contactsPath = path.resolve('./db/contacts.json');
 // console.log(`contactsPath:  ${contactsPath}`.red); //!
 console.log("contactsPath:".red, contactsPath.green); //!
 
@@ -24,4 +24,12 @@ function removeContact(contactId) {
 
 function addContact(name, email, phone) {
     // ...твой код
+}
+
+//! Экспорт функций
+module.exports = {
+    listContacts,
+    getContactById,
+    removeContact,
+    addContact
 }
