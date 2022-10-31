@@ -28,6 +28,17 @@ function addContact(name, email, phone) {
 
 
 
+//* Проверяем работу каждой функции:
+listContacts();
+
+getContactById(contactId);
+
+removeContact(contactId);
+
+addContact(name, email, phone);
+
+
+
 //! Экспорт функций
 module.exports = {
     listContacts,
