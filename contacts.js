@@ -1,7 +1,13 @@
 require('colors');
-const fs = require('fs').promises;
+
+// const fs = require('fs'); //? СИНХРОННЫЙ вариант
+const fs = require('fs').promises; //! АСИНХРОННЫЙ вариант
+
 const path = require('path');
-// let data = "пустая строка";
+
+
+
+
 
 
 //* Раскомментируй и запиши значение
@@ -10,7 +16,11 @@ const contactsPath = path.resolve('./db/contacts.json');
 console.log("contactsPath:".red, contactsPath.green); //!
 
 
-// TODO: задокументировать каждую функцию
+
+
+
+// TODO: ------------------------ Задокументировать каждую функцию ------------------------
+//? Получаем ВСЕ КОНТАКТЫ (СИНХРОННЫЙ вариант)
 function listContacts() {
     // fs.readFile('./db/contacts.json', 'utf8', (error, data) => {
     fs.readFile(contactsPath, 'utf8', (error, data) => {
@@ -21,44 +31,57 @@ function listContacts() {
     })
 };
 
+//? Получаем ОДИН КОНТАКТ (СИНХРОННЫЙ вариант)
+// function getContactById(contactId) {
+//     fs.readFile(contactsPath, 'utf8', (error, data) => {
+//         if (error) {
+//             console.error('Error read file contacts.json:'.red, error.red);
+//         }
+//         //! Получаем значение файла contacts.json ==> СТРОКА
+//         console.log("contacts.json:".yellow, data.blue); //!
+//         console.log("typeof data:".yellow, (typeof data).red);
+
+//         //! ПАРСИМ и получаем значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ
+//         const contactsParse = JSON.parse(data);
+//         console.log("contactsParse:".yellow, contactsParse); //!
+//         console.log("typeof contactsParse:".yellow, (typeof contactsParse).red);
+
+//         //! ПАРСИМ только один элемент МАССИВА (по индексу = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
+//         console.log("contactId:", contactId);
+//         const contactsParseByContactId = JSON.parse(data)[contactId - 1];
+//         console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
+//         console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
+
+//     })
+// }
 
 
+//! Получаем ОДИН КОНТАКТ (АСИНХРОННЫЙ вариант)
 async function getContactById(contactId) {
     try {
         // const data = await fs.readFile('./package.json', 'utf8'); //! +++
         // console.log("JSON.parse(data).devDependencies:".yellow, JSON.parse(data).devDependencies); //! +++ { nodemon: '^2.0.20', npx: '^10.2.2' }
         // console.log("JSON.parse(data):".yellow, JSON.parse(data)); //! +++ РАБОТАЕТ!!!
 
+        //! Получаем значение файла contacts.json ==> СТРОКА
         const data = await fs.readFile(contactsPath, 'utf8');
         console.log("contacts.json:".yellow, data.blue); //!
         console.log("typeof data:".yellow, (typeof data).red);
 
-        // const contactsArr = data.split("");
-        // console.log("contactsArr:".yellow, contactsArr); //!
-
+        //! ПАРСИМ и получаем значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ
         const contactsParse = JSON.parse(data);
         console.log("contactsParse:".yellow, contactsParse); //!
         console.log("typeof contactsParse:".yellow, (typeof contactsParse).red);
 
+        //! ПАРСИМ только один элемент МАССИВА (по индексу = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
         console.log("contactId:", contactId);
-        const contactsParseByContactId = JSON.parse(data)[contactId];
+        const contactsParseByContactId = JSON.parse(data)[contactId - 1];
         console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
         console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
 
     } catch (error) {
         console.error('Error read file contacts.json:'.red, error.red);
     }
-
-
-    // fs.readFile(contactsPath, 'utf8', (error, data) => {
-    //     if (error) {
-    //         console.error('Error read file contacts.json:'.red, error.red);
-    //     }
-    //     console.log("contacts.json:".yellow, data.blue);
-    //     // const contactsParse = JSON.parse(data);
-    //     // console.log("contactsParse:".yellow, contactsParse.blue);
-    //     console.log("contactsParse:".yellow, JSON.parse(data).blue);
-    // })
 }
 
 
@@ -75,7 +98,7 @@ function addContact(name, email, phone) {
 }
 
 
-
+//* =========================================================================================
 //* Проверяем работу каждой функции:
 // listContacts();
 
@@ -86,7 +109,7 @@ getContactById(4);
 // addContact(name, email, phone);
 
 
-
+//! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //! Экспорт функций
 module.exports = {
     listContacts,
