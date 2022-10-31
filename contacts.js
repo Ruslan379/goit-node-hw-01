@@ -125,16 +125,6 @@ async function removeContact(contactId) {
         const contactsNEWjson = await fs.readFile(contactsPath, 'utf8'); //? - Читаем файл contacts.json
         console.log("contactsNEW.json:".yellow, contactsNEWjson.blue); //!
 
-
-
-
-
-        //? - НЕ РАБОТАЕТ
-        // await fs.unlink(JSON.parse(data)[contactId - 1]);
-        // console.log("contactsParse:".yellow, contactsParse); //!
-
-
-
     } catch (error) {
         console.error('Error read file contacts.json:'.red, error.red);
     }
@@ -142,7 +132,8 @@ async function removeContact(contactId) {
 
 
 
-function addContact(name, email, phone) {
+async function addContact(name, email, phone) {
+    //! Создаем НОВЫЙ КОНТАКТ ==> newContact
     const newContact = {
         id: Date.now(),
         name,
@@ -150,6 +141,33 @@ function addContact(name, email, phone) {
         phone
     };
     console.log("newContact:".yellow, newContact); //!
+
+    //! Получаем значение файла contacts.json ==> СТРОКА
+    const data = await fs.readFile(contactsPath, 'utf8');
+    console.log("contacts.json:".yellow, data.blue); //!
+    // console.log("typeof data:".yellow, (typeof data).red);
+
+    //! ПАРСИМ и получаем значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ
+    const contactsParse = JSON.parse(data);
+    console.log("contactsParse:".yellow, contactsParse); //!
+    // console.log("typeof contactsParse:".yellow, (typeof contactsParse).red);
+
+    //! Добавляем в МАССИВ ОБЪЕКТОВ НОВЫЙ КОНТАКТ(newContact) ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
+    const newCntactsParse = [...contactsParse, newContact];
+    console.log("newCntactsParse:".yellow, newCntactsParse); //!
+
+
+    // //!!!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
+    // const contactsStringifyNewJSON = JSON.stringify(contactsParseNew);
+    // console.log("contactsStringifyNewJSON:".yellow, contactsStringifyNewJSON.gray); //!
+
+    // //!!!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
+    // // await fs.writeFile('./db/contactsNEW.json', contactsStringifyNewJSON, 'utf8'); //* - Записываем НОВЫЙ JSON в НОВЫЙ файл
+    // await fs.writeFile(contactsPath, contactsStringifyNewJSON, 'utf8'); //? - Записываем НОВЫЙ JSON в файл contacts.json
+    // // const contactsNEWjson = await fs.readFile('./db/contactsNEW.json', 'utf8'); //* - Читаем НОВЫЙ JSON файл
+    // const contactsNEWjson = await fs.readFile(contactsPath, 'utf8'); //? - Читаем файл contacts.json
+    // console.log("contactsNEW.json:".yellow, contactsNEWjson.blue); //!
+
 }
 
 
