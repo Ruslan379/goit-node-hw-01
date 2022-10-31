@@ -1,5 +1,5 @@
 require('colors');
-const fs = require('fs').promises;
+const fs = require('fs');
 const path = require('path');
 
 
@@ -11,7 +11,12 @@ console.log("contactsPath:".red, contactsPath.green); //!
 
 // TODO: задокументировать каждую функцию
 function listContacts() {
-    // ...твой код
+    fs.readFile('./public/file.txt', 'utf8', (error, data) => {
+        if (error) {
+            console.error('Error read file contacts.json:'.red, error.red);
+        }
+        console.log("contacts.json:".yellow, data.blue);
+    })
 }
 
 function getContactById(contactId) {
@@ -31,11 +36,11 @@ function addContact(name, email, phone) {
 //* Проверяем работу каждой функции:
 listContacts();
 
-getContactById(contactId);
+// getContactById(contactId);
 
-removeContact(contactId);
+// removeContact(contactId);
 
-addContact(name, email, phone);
+// addContact(name, email, phone);
 
 
 
