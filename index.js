@@ -10,10 +10,10 @@ const {
 } = require("./contacts");
 
 //! Проверяем работоспособность функций для работы с контактами
-listContacts();
+// listContacts();
 
-getContactById();
+// getContactById();
 
-removeContact();
+// removeContact();
 
-addContact();
+// addContact();

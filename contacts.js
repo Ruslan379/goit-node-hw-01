@@ -11,21 +11,27 @@ console.log("contactsPath:".red, contactsPath.green); //!
 
 // TODO: задокументировать каждую функцию
 function listContacts() {
-    fs.readFile('./public/file.txt', 'utf8', (error, data) => {
+    fs.readFile('./db/contacts.json', 'utf8', (error, data) => {
         if (error) {
             console.error('Error read file contacts.json:'.red, error.red);
         }
         console.log("contacts.json:".yellow, data.blue);
     })
-}
+};
+
+
 
 function getContactById(contactId) {
     // ...твой код
 }
 
+
+
 function removeContact(contactId) {
     // ...твой код
 }
+
+
 
 function addContact(name, email, phone) {
     // ...твой код
