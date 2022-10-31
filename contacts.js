@@ -143,7 +143,13 @@ async function removeContact(contactId) {
 
 
 function addContact(name, email, phone) {
-    // ...твой код
+    const newContact = {
+        id: Date.now(),
+        name,
+        email,
+        phone
+    };
+    console.log("newContact:".yellow, newContact); //!
 }
 
 
@@ -153,9 +159,9 @@ function addContact(name, email, phone) {
 
 // getContactById(4);
 
-removeContact(8);
+// removeContact(8);
 
-// addContact(name, email, phone);
+addContact("Test Contact", "Test.Contact@gmail.com", "(111) 222-334455");
 
 
 //! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
