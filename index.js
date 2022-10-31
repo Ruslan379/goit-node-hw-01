@@ -16,4 +16,4 @@ const {
 
 // removeContact(9);
 
-// addContact();
+// addContact("Test Contact", "Test.Contact@gmail.com", "(111) 222-334455");
