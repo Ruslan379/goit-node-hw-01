@@ -86,9 +86,39 @@ async function getContactById(contactId) {
 
 
 
+//! Удаляем ОДИН КОНТАКТ (АСИНХРОННЫЙ вариант)
+async function removeContact(contactId) {
+    try {
+        // const data = await fs.readFile('./package.json', 'utf8'); //! +++
+        // console.log("JSON.parse(data).devDependencies:".yellow, JSON.parse(data).devDependencies); //! +++ { nodemon: '^2.0.20', npx: '^10.2.2' }
+        // console.log("JSON.parse(data):".yellow, JSON.parse(data)); //! +++ РАБОТАЕТ!!!
 
-function removeContact(contactId) {
-    // ...твой код
+        //! Получаем значение файла contacts.json ==> СТРОКА
+        const data = await fs.readFile(contactsPath, 'utf8');
+        console.log("contacts.json:".yellow, data.blue); //!
+        // console.log("typeof data:".yellow, (typeof data).red);
+
+        //! ПАРСИМ и получаем значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ
+        const contactsParse = JSON.parse(data);
+        console.log("contactsParse:".yellow, contactsParse); //!
+        // console.log("typeof contactsParse:".yellow, (typeof contactsParse).red);
+
+        //! ПАРСИМ только один элемент МАССИВА (по индексу = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
+        console.log("contactId:", contactId);
+        const contactsParseByContactId = JSON.parse(data)[contactId - 1];
+        console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
+        // console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
+
+        //!!! УДАЛЯЕМ только один элемент МАССИВА (по индексу = contactId) и получаем  ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
+        const contactsParseNew = contactsParse.filter(contact => Number(contact.id) !== contactId);
+        console.log("contactsParseNew:".yellow, contactsParseNew); //!
+
+
+
+
+    } catch (error) {
+        console.error('Error read file contacts.json:'.red, error.red);
+    }
 }
 
 
@@ -102,9 +132,9 @@ function addContact(name, email, phone) {
 //* Проверяем работу каждой функции:
 // listContacts();
 
-getContactById(4);
+// getContactById(4);
 
-// removeContact(contactId);
+removeContact(4);
 
 // addContact(name, email, phone);
 

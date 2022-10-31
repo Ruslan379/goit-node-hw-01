@@ -12,7 +12,7 @@ const {
 //! Проверяем работоспособность функций для работы с контактами
 // listContacts();
 
-// getContactById();
+// getContactById(4);
 
 // removeContact();
 
