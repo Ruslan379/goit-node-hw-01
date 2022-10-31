@@ -119,8 +119,10 @@ async function removeContact(contactId) {
         console.log("contactsStringifyNewJSON:".yellow, contactsStringifyNewJSON.gray); //!
 
         //!!!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
-        await fs.writeFile('./db/contactsNEW.json', contactsStringifyNewJSON, 'utf8');
-        const contactsNEWjson = await fs.readFile('./db/contactsNEW.json', 'utf8');
+        // await fs.writeFile('./db/contactsNEW.json', contactsStringifyNewJSON, 'utf8'); //* - Записываем НОВЫЙ JSON в НОВЫЙ файл
+        await fs.writeFile(contactsPath, contactsStringifyNewJSON, 'utf8'); //? - Записываем НОВЫЙ JSON в файл contacts.json
+        // const contactsNEWjson = await fs.readFile('./db/contactsNEW.json', 'utf8'); //* - Читаем НОВЫЙ JSON файл
+        const contactsNEWjson = await fs.readFile(contactsPath, 'utf8'); //? - Читаем файл contacts.json
         console.log("contactsNEW.json:".yellow, contactsNEWjson.blue); //!
 
 
@@ -151,7 +153,7 @@ function addContact(name, email, phone) {
 
 // getContactById(4);
 
-// removeContact(7);
+removeContact(8);
 
 // addContact(name, email, phone);
 
