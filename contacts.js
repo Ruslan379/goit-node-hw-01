@@ -114,6 +114,23 @@ async function removeContact(contactId) {
         console.log("contactsParseNew:".yellow, contactsParseNew); //!
 
 
+        //!!!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
+        const contactsStringifyNewJSON = JSON.stringify(contactsParseNew);
+        console.log("contactsStringifyNewJSON:".yellow, contactsStringifyNewJSON.gray); //!
+
+        //!!!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
+        await fs.writeFile('./db/contactsNEW.json', contactsStringifyNewJSON, 'utf8');
+        const contactsNEWjson = await fs.readFile('./db/contactsNEW.json', 'utf8');
+        console.log("contactsNEW.json:".yellow, contactsNEWjson.blue); //!
+
+
+
+
+
+        //? - НЕ РАБОТАЕТ
+        // await fs.unlink(JSON.parse(data)[contactId - 1]);
+        // console.log("contactsParse:".yellow, contactsParse); //!
+
 
 
     } catch (error) {
@@ -134,7 +151,7 @@ function addContact(name, email, phone) {
 
 // getContactById(4);
 
-removeContact(4);
+// removeContact(7);
 
 // addContact(name, email, phone);
 

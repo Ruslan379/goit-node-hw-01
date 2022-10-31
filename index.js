@@ -14,6 +14,6 @@ const {
 
 // getContactById(4);
 
-// removeContact();
+removeContact(9);
 
 // addContact();
