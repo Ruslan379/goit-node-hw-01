@@ -9,3 +9,11 @@ const {
     addContact
 } = require("./contacts");
 
+//! Проверяем работоспособность функций для работы с контактами
+listContacts();
+
+getContactById();
+
+removeContact();
+
+addContact();
