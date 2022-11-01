@@ -26,15 +26,33 @@ console.log("contactsPath:".red, contactsPath.green); //!
 
 // TODO: ------------------------ Задокументировать каждую функцию ------------------------
 //? Получаем ВСЕ КОНТАКТЫ (СИНХРОННЫЙ вариант)
-function listContacts() {
-    // fs.readFile('./db/contacts.json', 'utf8', (error, data) => {
-    fs.readFile(contactsPath, 'utf8', (error, data) => {
-        if (error) {
-            console.error('Error read file contacts.json:'.red, error.red);
-        }
-        console.log("contacts.json:".yellow, data.blue);
-    })
-};
+// function listContacts() {
+//     // fs.readFile('./db/contacts.json', 'utf8', (error, data) => {
+//     fs.readFile(contactsPath, 'utf8', (error, data) => {
+//         if (error) {
+//             console.error('Error read file contacts.json:'.red, error.red);
+//         }
+//         console.log("contacts.json:".yellow, data.blue);
+//     })
+// };
+
+//! Получаем ВСЕ КОНТАКТЫ (АСИНХРОННЫЙ вариант)
+async function listContacts() {
+    try {
+        //! Получаем значение файла contacts.json ==> СТРОКА
+        const data = await fs.readFile(contactsPath, 'utf8');
+        console.log("contacts.json:".yellow, data.blue); //!
+        console.log("typeof data:".yellow, (typeof data).red); //!
+
+        //! ПАРСИМ и получаем значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ
+        const contactsParse = JSON.parse(data);
+        console.log("contactsParse:".yellow, contactsParse); //!
+        console.log("typeof contactsParse:".yellow, (typeof contactsParse).red);
+
+    } catch (error) {
+        console.error('Error read file contacts.json:'.red, error.red);
+    }
+}
 
 //? Получаем ОДИН КОНТАКТ (СИНХРОННЫЙ вариант)
 // function getContactById(contactId) {
