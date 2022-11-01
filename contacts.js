@@ -199,7 +199,7 @@ async function addContact(name, email, phone) {
 //* Проверяем работу каждой функции:
 // listContacts();
 
-getContactById(4);
+// getContactById(4);
 
 // removeContact(8);
 

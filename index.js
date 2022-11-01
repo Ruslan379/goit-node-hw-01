@@ -19,7 +19,7 @@ const argv = require("yargs").argv;
 
 
 //! Шаг 3 ==> Проверяем работоспособность функций для работы с контактами
-listContacts();
+// listContacts();
 
 // getContactById(4);
 
@@ -58,30 +58,22 @@ function invokeAction({ action, id, name, email, phone }) {
 
 console.log("argv:", argv);
 
-// invokeAction(argv);
-
-//! list
-// invokeAction("list");
-
-//! get
-// invokeAction("get", 9);
-
-//! add
-// invokeAction("add", _, "Ruslan2 Fate2", "ruslan_fate2@gmail.com", "(73737) 37373-3131717199");
-
-//! remove
-// invokeAction("remove", 10);
+invokeAction(argv);
 
 
 //! Шаг 5 ==> Запусти команды в терминале и сделай отдельный скриншот результата выполнения каждой команды.
 //? Получаем и выводим весь список контактов в виде таблицы(console.table)
+//! list
 //* node index.js --action list
 
 //? Получаем контакт по id
+//! get
 //* node index.js --action get --id 5
 
 //? Добавялем контакт
+//! add
 //* node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
 
 //? Удаляем контакт
-//* node index.js --action remove--id = 3
+//! remove
+//* node index.js --action remove --id 3
