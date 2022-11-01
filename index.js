@@ -55,15 +55,15 @@ function invokeAction({ action, id, name, email, phone }) {
     }
 }
 
-// invokeAction(argv);
+invokeAction(argv);
 //! list
-invokeAction("list");
+// invokeAction("list");
 
 //! get
-invokeAction("get", 9);
+// invokeAction("get", 9);
 
 //! add
-invokeAction("add", _, "Ruslan Fate", "ruslan_fate@gmail.com", "(777) 333-3377599");
+// invokeAction("add", _, "Ruslan2 Fate2", "ruslan_fate2@gmail.com", "(73737) 37373-3131717199");
 
 //! remove
-invokeAction("remove", 10);
+// invokeAction("remove", 10);

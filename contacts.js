@@ -136,7 +136,7 @@ async function removeContact(contactId) {
 }
 
 
-
+//! Добавляем ОДИН КОНТАКТ (АСИНХРОННЫЙ вариант)
 async function addContact(name, email, phone) {
     //! Создаем НОВЫЙ КОНТАКТ ==> newContact
     const newContact = {
