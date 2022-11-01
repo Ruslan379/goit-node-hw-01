@@ -1,3 +1,5 @@
+require('colors');
+
 // const { gameGuessNumber } = require("./guess-the-number");
 
 // gameGuessNumber();
@@ -7,15 +9,18 @@ const {
     listContacts,
     getContactById,
     removeContact,
-    addContact
+    addContact,
+    lineBreak
 } = require("./contacts");
 
 
-//! Шаг 4 ==> Импорт пакета yargs
+//! Шаг 4-1 ==> Импорт пакета yargs
 const argv = require("yargs").argv;
 
+//! Шаг 4-2 ==> Импорт модуля commander 
+const { Command } = require("commander");
 
-
+// -----------------------------------------------------------------------------
 
 
 //! Шаг 3 ==> Проверяем работоспособность функций для работы с контактами
@@ -29,42 +34,66 @@ const argv = require("yargs").argv;
 
 
 
-
-//! Шаг 4 ==> Функцию invokeAction() для удобного парса аргументов командной строки
+//! Шаг 4-1 ==> Функция invokeAction() для удобного парса аргументов командной строки
 // TODO: рефакторить
-function invokeAction({ action, id, name, email, phone }) {
+(function invokeAction({ action, id, name, email, phone }) {
     switch (action) {
         case "list":
-            console.log("action --> list"); //!
+            console.log("action --> list".green); //!
             listContacts();
             break;
 
         case "get":
-            console.log("action --> get"); //!
+            console.log("action --> get".blue); //!
             getContactById(id);
             break;
 
         case "add":
-            console.log("action --> add"); //!
+            console.log("action --> add".yellow); //!
             addContact(name, email, phone);
             break;
 
         case "remove":
-            console.log("action --> remove"); //!
+            console.log("action --> remove".red); //!
             removeContact(id);
             break;
 
         default:
             console.warn("\x1B[31m Unknown action type!");
     }
-}
+})(argv); //? Самовызывающееся функциональное выражение (IIFE)
 
-console.log("argv:", argv);
+console.log("argv:".yellow, argv); //!
+lineBreak();
 
-invokeAction(argv);
+
+// invokeAction(argv); //! парсим аргументы командной строки
 
 
-//! Шаг 5 ==> Запусти команды в терминале и сделай отдельный скриншот результата выполнения каждой команды.
+//! Шаг 4-2 ==> Используем модуль commander для парсинга аргументов командной строки
+// const program = new Command();
+
+// program
+//     .option("-a, --action <type>", "choose action")
+//     .option("-i, --id <type>", "user id")
+//     .option("-n, --name <type>", "user name")
+//     .option("-e, --email <type>", "user email")
+//     .option("-p, --phone <type>", "user phone");
+
+// program.parse(process.argv);
+
+// const argv = program.opts();
+
+// // TODO: рефакторить
+
+
+
+
+
+
+
+//! Шаг 5 ==> Запускаем команды в терминале  ===> CLI .
+
 //? Получаем и выводим весь список контактов в виде таблицы(console.table)
 //! list
 //* node index.js --action list
@@ -77,6 +106,8 @@ invokeAction(argv);
 //! add
 //* node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
 //* node index.js --action add --name Mango2 --email mango2@gmail.com --phone 222-11-11
+//* node index.js --action add --name Mango3 --email mango3@gmail.com --phone 333-33-33
+
 
 //? Удаляем контакт
 //! remove
