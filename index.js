@@ -40,26 +40,31 @@ const { Command } = require("commander");
     switch (action) {
         case "list":
             console.log("action --> list".green); //!
+            lineBreak();
             listContacts();
             break;
 
         case "get":
             console.log("action --> get".blue); //!
+            lineBreak();
             getContactById(id);
             break;
 
         case "add":
             console.log("action --> add".yellow); //!
+            lineBreak();
             addContact(name, email, phone);
             break;
 
         case "remove":
             console.log("action --> remove".red); //!
+            lineBreak();
             removeContact(id);
             break;
 
         default:
             console.warn("\x1B[31m Unknown action type!");
+            lineBreak();
     }
 })(argv); //? Самовызывающееся функциональное выражение (IIFE)
 
@@ -107,6 +112,9 @@ lineBreak();
 //* node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
 //* node index.js --action add --name Mango2 --email mango2@gmail.com --phone 222-11-11
 //* node index.js --action add --name Mango3 --email mango3@gmail.com --phone 333-33-33
+//* node index.js --action add --name Mango4 --email mango4@gmail.com --phone 444-44-44
+//* node index.js --action add --name Mango5 --email mango5@gmail.com --phone 555-55-55
+
 
 
 //? Удаляем контакт
