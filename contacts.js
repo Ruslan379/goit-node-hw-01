@@ -96,13 +96,13 @@ async function getContactById(contactId) {
         console.log("contactsParse:".yellow, contactsParse); //!
         console.log("typeof contactsParse:".yellow, (typeof contactsParse).red);
 
-        //? ПАРСИМ только один элемент МАССИВА (по ИНДЕКС = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
+        //? ПАРСИМ и КОНСОЛИМ только один элемент МАССИВА (по ИНДЕКС = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
         // console.log("contactId:", contactId);
         // const contactsParseByContactId = JSON.parse(data)[contactId - 1];
         // console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
         // console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
 
-        //!!! ДОСТАЕМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ c ОДНИМ ОБЪЕКТОМ
+        //!!! ДОСТАЕМ и КОНСОЛИМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ c ОДНИМ ОБЪЕКТОМ
         const contactsParseByIdArr = contactsParse.filter(contact => Number(contact.id) === contactId);
         const contactsParseById = contactsParseByIdArr[0];
         console.log("contactsParseById:".yellow, contactsParseById); //!
@@ -131,13 +131,18 @@ async function removeContact(contactId) {
         console.log("contactsParse:".yellow, contactsParse); //!
         // console.log("typeof contactsParse:".yellow, (typeof contactsParse).red);
 
-        //! ПАРСИМ только один элемент МАССИВА (по индексу = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
-        console.log("contactId:", contactId);
-        const contactsParseByContactId = JSON.parse(data)[contactId - 1];
-        console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
+        //? ПАРСИМ и КОНСОЛИМ только один элемент МАССИВА (по индексу = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
+        // console.log("contactId:", contactId);
+        // const contactsParseByContactId = JSON.parse(data)[contactId - 1];
+        // console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
         // console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
 
-        //!!! УДАЛЯЕМ только один элемент МАССИВА (по индексу = contactId) и получаем  ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
+        //! ДОСТАЕМ и КОНСОЛИМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ c ОДНИМ ОБЪЕКТОМ
+        const contactsParseByIdArr = contactsParse.filter(contact => Number(contact.id) === contactId);
+        const contactsParseById = contactsParseByIdArr[0];
+        console.log("contactsParseById:".yellow, contactsParseById); //!
+
+        //!!! УДАЛЯЕМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
         const contactsParseNew = contactsParse.filter(contact => Number(contact.id) !== contactId);
         console.log("contactsParseNew:".yellow, contactsParseNew); //!
 
