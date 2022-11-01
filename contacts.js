@@ -39,12 +39,12 @@ console.log("contactsPath:".red, contactsPath.green); //!
 //! Получаем ВСЕ КОНТАКТЫ (АСИНХРОННЫЙ вариант)
 async function listContacts() {
     try {
-        //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА
+        //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
         const data = await fs.readFile(contactsPath, 'utf8');
         console.log("contacts.json:".yellow, data.blue); //!
         console.log("typeof data:".yellow, (typeof data).red); //!
 
-        //!!! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ
+        //!!! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
         const contactsParse = JSON.parse(data);
         console.log("contactsParse:".yellow, contactsParse); //!+++
         console.log("typeof contactsParse:".yellow, (typeof contactsParse).red); //!
@@ -60,11 +60,11 @@ async function listContacts() {
 //         if (error) {
 //             console.error('Error read file contacts.json:'.red, error.red);
 //         }
-//         //! Получаем значение файла contacts.json ==> СТРОКА
+//         //! Получаем значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
 //         console.log("contacts.json:".yellow, data.blue); //!
 //         console.log("typeof data:".yellow, (typeof data).red);
 
-//         //! ПАРСИМ и получаем значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ
+//         //! ПАРСИМ и получаем значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
 //         const contactsParse = JSON.parse(data);
 //         console.log("contactsParse:".yellow, contactsParse); //!
 //         console.log("typeof contactsParse:".yellow, (typeof contactsParse).red);
@@ -86,12 +86,12 @@ async function getContactById(contactId) {
         // console.log("JSON.parse(data).devDependencies:".yellow, JSON.parse(data).devDependencies); //! +++ { nodemon: '^2.0.20', npx: '^10.2.2' }
         // console.log("JSON.parse(data):".yellow, JSON.parse(data)); //! +++ РАБОТАЕТ!!!
 
-        //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА
+        //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
         const data = await fs.readFile(contactsPath, 'utf8');
         console.log("contacts.json:".yellow, data.blue); //!
         console.log("typeof data:".yellow, (typeof data).red); //!
 
-        //! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ
+        //! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
         const contactsParse = JSON.parse(data);
         console.log("contactsParse:".yellow, contactsParse); //!
         console.log("typeof contactsParse:".yellow, (typeof contactsParse).red); //!
@@ -121,12 +121,12 @@ async function removeContact(contactId) {
         // console.log("JSON.parse(data).devDependencies:".yellow, JSON.parse(data).devDependencies); //! +++ { nodemon: '^2.0.20', npx: '^10.2.2' }
         // console.log("JSON.parse(data):".yellow, JSON.parse(data)); //! +++ РАБОТАЕТ!!!
 
-        //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА
+        //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
         const data = await fs.readFile(contactsPath, 'utf8');
         console.log("contacts.json:".yellow, data.blue); //!
         console.log("typeof data:".yellow, (typeof data).red); //!
 
-        //! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ
+        //! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
         const contactsParse = JSON.parse(data);
         console.log("contactsParse:".yellow, contactsParse); //!
         console.log("typeof contactsParse:".yellow, (typeof contactsParse).red); //!
@@ -137,26 +137,26 @@ async function removeContact(contactId) {
         // console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
         // console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
 
-        //! ДОСТАЕМ и КОНСОЛИМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ c ОДНИМ ОБЪЕКТОМ
+        //!!! ДОСТАЕМ и КОНСОЛИМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ c ОДНИМ ОБЪЕКТОМ
         const contactsParseByIdArr = contactsParse.filter(contact => Number(contact.id) === contactId);
         const contactsParseById = contactsParseByIdArr[0];
-        console.log("contactsParseById:".yellow, contactsParseById); //!
+        console.log("Этот контакт будет удален:".yellow, contactsParseById); //!+++
 
         //!!! УДАЛЯЕМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
         const contactsParseNew = contactsParse.filter(contact => Number(contact.id) !== contactId);
-        console.log("contactsParseNew:".yellow, contactsParseNew); //!
+        console.log("НОВЫЙ МАССИВ ОБЪЕКТОВ:".yellow, contactsParseNew); //!+++
 
 
-        //!!!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
+        //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
         const contactsStringifyNewJSON = JSON.stringify(contactsParseNew);
-        console.log("contactsStringifyNewJSON:".yellow, contactsStringifyNewJSON.gray); //!
+        console.log("НОВЫЙ JSON:".yellow, contactsStringifyNewJSON.gray); //!
 
-        //!!!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
+        //!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
         // await fs.writeFile('./db/contactsNEW.json', contactsStringifyNewJSON, 'utf8'); //* - Записываем НОВЫЙ JSON в НОВЫЙ файл
         await fs.writeFile(contactsPath, contactsStringifyNewJSON, 'utf8'); //? - Записываем НОВЫЙ JSON в файл contacts.json
         // const contactsNEWjson = await fs.readFile('./db/contactsNEW.json', 'utf8'); //* - Читаем НОВЫЙ JSON файл
         const contactsNEWjson = await fs.readFile(contactsPath, 'utf8'); //? - Читаем файл contacts.json
-        console.log("contactsNEW.json:".yellow, contactsNEWjson.blue); //!
+        console.log("НОВЫЙ JSON-файл --> contacts.json:".yellow, contactsNEWjson.blue); //!
 
     } catch (error) {
         console.error('Error read file contacts.json:'.red, error.red);
@@ -164,7 +164,7 @@ async function removeContact(contactId) {
 }
 
 
-//! Добавляем ОДИН КОНТАКТ (АСИНХРОННЫЙ вариант)
+//! Добавляем КОНТАКТ (АСИНХРОННЫЙ вариант)
 async function addContact(name, email, phone) {
     //! Создаем НОВЫЙ КОНТАКТ ==> newContact
     const newContact = {
@@ -174,33 +174,33 @@ async function addContact(name, email, phone) {
         email,
         phone
     };
-    console.log("newContact:".yellow, newContact); //!
+    console.log("НОВЫЙ КОНТАКТ:".yellow, newContact); //!+++
 
-    //! Получаем значение файла(ВСЕ КОНТАКТЫ) contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
+    //! Получаем значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
     const data = await fs.readFile(contactsPath, 'utf8');
     console.log("contacts.json:".yellow, data.blue); //!
-    // console.log("typeof data:".yellow, (typeof data).red);
+    console.log("typeof data:".yellow, (typeof data).red); //!
 
-    //! ПАРСИМ и получаем значение файла(ВСЕ КОНТАКТЫ) contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
+    //! ПАРСИМ и получаем значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
     const contactsParse = JSON.parse(data);
     console.log("contactsParse:".yellow, contactsParse); //!
-    // console.log("typeof contactsParse:".yellow, (typeof contactsParse).red);
+    console.log("typeof contactsParse:".yellow, (typeof contactsParse).red); //!
 
-    //! Добавляем в МАССИВ ОБЪЕКТОВ НОВЫЙ КОНТАКТ(newContact) ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
+    //!!! Добавляем в МАССИВ ОБЪЕКТОВ НОВЫЙ КОНТАКТ(newContact) ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
     const newCоntactsParse = [...contactsParse, newContact];
-    console.log("newCоntactsParse:".yellow, newCоntactsParse); //!
+    console.log("НОВЫЙ МАССИВ ОБЪЕКТОВ:".yellow, newCоntactsParse); //!+++
 
 
-    //!!!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
+    //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
     const newCоntactsStringifyNewJSON = JSON.stringify(newCоntactsParse);
-    console.log("newCоntactsStringifyNewJSON:".yellow, newCоntactsStringifyNewJSON.gray); //!
+    console.log("НОВЫЙ JSON:".yellow, newCоntactsStringifyNewJSON.gray); //!
 
-    //!!!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
+    //!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
     // await fs.writeFile('./db/contactsNEW.json', newCоntactsStringifyNewJSON, 'utf8'); //* - Записываем НОВЫЙ JSON в НОВЫЙ файл
     await fs.writeFile(contactsPath, newCоntactsStringifyNewJSON, 'utf8'); //? - Записываем НОВЫЙ JSON в файл contacts.json
     // const contactsNEWjson = await fs.readFile('./db/contactsNEW.json', 'utf8'); //* - Читаем НОВЫЙ JSON файл
     const contactsNEWjson = await fs.readFile(contactsPath, 'utf8'); //? - Читаем файл contacts.json
-    console.log("contactsNEW.json:".yellow, contactsNEWjson.blue); //!
+    console.log("НОВЫЙ JSON-файл --> contacts.json:".yellow, contactsNEWjson.blue); //!
 
 }
 

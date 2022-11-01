@@ -35,19 +35,22 @@ const argv = require("yargs").argv;
 function invokeAction({ action, id, name, email, phone }) {
     switch (action) {
         case "list":
-            console.log("action --> listContacts");
+            console.log("action --> list"); //!
             listContacts();
             break;
 
         case "get":
+            console.log("action --> get"); //!
             getContactById(id);
             break;
 
         case "add":
+            console.log("action --> add"); //!
             addContact(name, email, phone);
             break;
 
         case "remove":
+            console.log("action --> remove"); //!
             removeContact(id);
             break;
 
@@ -73,6 +76,7 @@ invokeAction(argv);
 //? Добавялем контакт
 //! add
 //* node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
+//* node index.js --action add --name Mango2 --email mango2@gmail.com --phone 222-11-11
 
 //? Удаляем контакт
 //! remove

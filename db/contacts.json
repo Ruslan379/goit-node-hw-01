@@ -1,5 +1,4 @@
 [
-  {"id":"2","name":"Chaim Lewis","email":"dui.in@egetlacus.ca","phone":"(294) 840-6685"},
   {"id":"4","name":"Wylie Pope","email":"est@utquamvel.net","phone":"(692) 802-2949"},
   {"id":"5","name":"Abbot Franks","email":"scelerisque@magnis.org","phone":"(186) 568-3720"},
   {"id":"9","name":"Thomas Lucas","email":"nec@Nulla.com","phone":"(704) 398-7993"},
@@ -7,5 +6,7 @@
   {"id":"1axvx53tgl9wz6fr7","name":"Test Contact","email":"Test.Contact@gmail.com","phone":"(111) 222-334455"},
   {"id":"38ezj568l9y6irsy","name":"Test Contact","email":"Test.Contact@gmail.com","phone":"(111) 222-334455"},
   {"id":"38ezj734l9y6n5d5","name":"Test Contact","email":"Test.Contact@gmail.com","phone":"(111) 222-334455"},
-  {"id":"38ezj9j4l9y6r22s","name":"Ruslan Fate","email":"ruslan_fate@gmail.com","phone":"(777) 333-3377599"}
+  {"id":"38ezj9j4l9y6r22s","name":"Ruslan Fate","email":"ruslan_fate@gmail.com","phone":"(777) 333-3377599"},
+  {"id":"1axvx56rcl9yhdvf3","name":"Mango","email":"mango@gmail.com","phone":"322-22-22"},
+  {"id":"r4l9yhtxw0","name":"Mango2","email":"mango2@gmail.com","phone":"222-11-11"}
 ]
