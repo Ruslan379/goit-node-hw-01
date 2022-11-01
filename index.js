@@ -19,7 +19,7 @@ const argv = require("yargs").argv;
 
 
 //! Шаг 3 ==> Проверяем работоспособность функций для работы с контактами
-// listContacts();
+listContacts();
 
 // getContactById(4);
 
@@ -35,6 +35,7 @@ const argv = require("yargs").argv;
 function invokeAction({ action, id, name, email, phone }) {
     switch (action) {
         case "list":
+            console.log("action --> listContacts");
             listContacts();
             break;
 
@@ -55,7 +56,10 @@ function invokeAction({ action, id, name, email, phone }) {
     }
 }
 
-invokeAction(argv);
+console.log("argv:", argv);
+
+// invokeAction(argv);
+
 //! list
 // invokeAction("list");
 
