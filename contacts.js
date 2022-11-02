@@ -228,19 +228,22 @@ async function addContact(name, email, phone) {
         console.table(newContactArr); //!+++
         lineBreak();
 
-        //! Получаем значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
-        const data = await fs.readFile(contactsPath, 'utf8');
-        console.log("contacts.json:\n".yellow, data.blue); //!
-        console.log("typeof (contacts.json):".yellow, (typeof data).red); //!
-        lineBreak();
+        // //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
+        // const data = await fs.readFile(contactsPath, 'utf8');
+        // console.log("contacts.json:\n".yellow, data.blue); //!
+        // console.log("typeof (contacts.json):".yellow, (typeof data).red); //!
+        // lineBreak();
 
-        //! ПАРСИМ и получаем значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
-        const contactsParse = JSON.parse(data);
-        // console.log("СПИСОК КОНТАКТОВ:".yellow, contactsParse); //!+++
-        console.log("СПИСОК КОНТАКТОВ:".yellow); //!+++
-        console.table(contactsParse); //!+++
-        console.log("typeof (СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
-        lineBreak();
+        // //! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
+        // const contactsParse = JSON.parse(data);
+        // // console.log("СПИСОК КОНТАКТОВ:".yellow, contactsParse); //!+++
+        // console.log("СПИСОК КОНТАКТОВ:".yellow); //!
+        // console.table(contactsParse); //!
+        // console.log("typeof (СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
+        // lineBreak();
+
+        //! Вызываем ф-цию listContacts()  ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ) + все КОНСОЛИ
+        const contactsParse = await listContacts();
 
         //!!! Добавляем в МАССИВ ОБЪЕКТОВ НОВЫЙ КОНТАКТ(newContact) ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
         const contactsParseNew = [...contactsParse, newContact];
