@@ -1,8 +1,7 @@
-require('colors');
-
 // const { gameGuessNumber } = require("./guess-the-number");
-
 // gameGuessNumber();
+
+require('colors');
 
 //! Шаг 3 ==> Импорт модуля contacts.js
 const {
@@ -13,14 +12,13 @@ const {
     lineBreak
 } = require("./contacts");
 
-
 //! Шаг 4-1 ==> Импорт пакета yargs
 const argv = require("yargs").argv;
 
 //! Шаг 4-2 ==> Импорт модуля commander 
 const { Command } = require("commander");
-
 // -----------------------------------------------------------------------------
+
 
 
 //! Шаг 3 ==> Проверяем работоспособность функций для работы с контактами
@@ -31,6 +29,10 @@ const { Command } = require("commander");
 // removeContact(9);
 
 // addContact("Ruslan Fate", "ruslan_fate@gmail.com", "(777) 333-3377599");
+// -----------------------------------------------------------------------------
+
+
+
 
 
 
@@ -71,8 +73,11 @@ const { Command } = require("commander");
 console.log("argv:".yellow, argv); //!
 lineBreak();
 
-
 // invokeAction(argv); //! парсим аргументы командной строки
+// -----------------------------------------------------------------------------
+
+
+
 
 
 //! Шаг 4-2 ==> Используем модуль commander для парсинга аргументов командной строки
@@ -89,23 +94,60 @@ lineBreak();
 
 // const argv = program.opts();
 
-// // TODO: рефакторить
+// TODO: рефакторить
+// (function invokeAction({ action, id, name, email, phone }) {
+//     switch (action) {
+//         case "list":
+//             console.log("action --> list".green); //!
+//             lineBreak();
+//             listContacts();
+//             break;
+
+//         case "get":
+//             console.log("action --> get".blue); //!
+//             lineBreak();
+//             getContactById(id);
+//             break;
+
+//         case "add":
+//             console.log("action --> add".yellow); //!
+//             lineBreak();
+//             addContact(name, email, phone);
+//             break;
+
+//         case "remove":
+//             console.log("action --> remove".red); //!
+//             lineBreak();
+//             removeContact(id);
+//             break;
+
+//         default:
+//             console.warn("\x1B[31m Unknown action type!");
+//             lineBreak();
+//     }
+// })(argv); //? Самовызывающееся функциональное выражение (IIFE)
+
+// console.log("argv:".yellow, argv); //!
+// lineBreak();
+
+// // invokeAction(argv); //! парсим аргументы командной строки
+// -----------------------------------------------------------------------------
 
 
 
 
 
-
-
-//! Шаг 5 ==> Запускаем команды в терминале  ===> CLI .
+//! Шаг 5 ==> Запускаем команды в терминале  ===> CLI
 
 //? Получаем и выводим весь список контактов в виде таблицы(console.table)
 //! list
 //* node index.js --action list
 
+
 //? Получаем контакт по id
 //! get
 //* node index.js --action get --id 5
+
 
 //? Добавялем контакт
 //! add
@@ -114,7 +156,6 @@ lineBreak();
 //* node index.js --action add --name Mango3 --email mango3@gmail.com --phone 333-33-33
 //* node index.js --action add --name Mango4 --email mango4@gmail.com --phone 444-44-44
 //* node index.js --action add --name Mango5 --email mango5@gmail.com --phone 555-55-55
-
 
 
 //? Удаляем контакт
