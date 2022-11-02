@@ -60,6 +60,7 @@ async function listContacts() {
         console.table(contactsParse); //!+++
         console.log("typeof (СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
         lineBreak();
+        return contactsParse;
 
     } catch (error) {
         console.error('Error read file contacts.json:'.red, error.red);
@@ -102,18 +103,21 @@ async function getContactById(contactId) {
         // console.log("JSON.parse(data):".yellow, JSON.parse(data)); //! +++ РАБОТАЕТ!!!
 
         //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
-        const data = await fs.readFile(contactsPath, 'utf8');
-        console.log("contacts.json:\n".yellow, data.blue); //!
-        console.log("typeof (contacts.json):".yellow, (typeof data).red); //!
-        lineBreak();
+        // const data = await fs.readFile(contactsPath, 'utf8');
+        // console.log("contacts.json:\n".yellow, data.blue); //!
+        // console.log("typeof (contacts.json):".yellow, (typeof data).red); //!
+        // lineBreak();
 
-        //! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
-        const contactsParse = JSON.parse(data);
-        // console.log("contactsParse:".yellow, contactsParse); //!
-        console.log("СПИСОК КОНТАКТОВ:".yellow); //!
-        console.table(contactsParse); //!
-        console.log("typeof (СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
-        lineBreak();
+        // //! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
+        // const contactsParse = JSON.parse(data);
+        // // console.log("contactsParse:".yellow, contactsParse); //!
+        // console.log("СПИСОК КОНТАКТОВ:".yellow); //!
+        // console.table(contactsParse); //!
+        // console.log("typeof (СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
+        // lineBreak();
+
+        //! Вызываем ф-цию listContacts()  ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ) + все КОНСОЛИ
+        const contactsParse = await listContacts();
 
         //? ПАРСИМ и КОНСОЛИМ только один элемент МАССИВА (по ИНДЕКС = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
         // console.log("contactId:", contactId);
