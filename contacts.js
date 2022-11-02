@@ -98,11 +98,12 @@ async function listContacts() {
 //! Получаем ОДИН КОНТАКТ (АСИНХРОННЫЙ вариант)
 async function getContactById(contactId) {
     try {
-        // const data = await fs.readFile('./package.json', 'utf8'); //! +++
-        // console.log("JSON.parse(data).devDependencies:".yellow, JSON.parse(data).devDependencies); //! +++ { nodemon: '^2.0.20', npx: '^10.2.2' }
-        // console.log("JSON.parse(data):".yellow, JSON.parse(data)); //! +++ РАБОТАЕТ!!!
+        // // ? TEST - ПАРСИМ и КОНСОЛИМ значение файла package.json  ==> package.json + devDependencies
+        // // const data = await fs.readFile('./package.json', 'utf8'); //! +++
+        // // console.log("JSON.parse(data).devDependencies:".yellow, JSON.parse(data).devDependencies); //! +++ { nodemon: '^2.0.20', npx: '^10.2.2' }
+        // // console.log("JSON.parse(data):".yellow, JSON.parse(data)); //! +++ РАБОТАЕТ!!!
 
-        //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
+        // ! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
         // const data = await fs.readFile(contactsPath, 'utf8');
         // console.log("contacts.json:\n".yellow, data.blue); //!
         // console.log("typeof (contacts.json):".yellow, (typeof data).red); //!
@@ -116,15 +117,15 @@ async function getContactById(contactId) {
         // console.log("typeof (СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
         // lineBreak();
 
+        // // ? ПАРСИМ и КОНСОЛИМ только один элемент МАССИВА (по ИНДЕКС = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
+        // // console.log("contactId:", contactId);
+        // // const contactsParseByContactId = JSON.parse(data)[contactId - 1];
+        // // console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
+        // // console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
+        // // lineBreak();
+
         //! Вызываем ф-цию listContacts()  ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ) + все КОНСОЛИ
         const contactsParse = await listContacts();
-
-        //? ПАРСИМ и КОНСОЛИМ только один элемент МАССИВА (по ИНДЕКС = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
-        // console.log("contactId:", contactId);
-        // const contactsParseByContactId = JSON.parse(data)[contactId - 1];
-        // console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
-        // console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
-        // lineBreak();
 
         //!!! ДОСТАЕМ и КОНСОЛИМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ c ОДНИМ ОБЪЕКТОМ
         const contactsParseByIdArr = contactsParse.filter(contact => String(contact.id) === String(contactId));
@@ -145,36 +146,35 @@ async function getContactById(contactId) {
 //! Удаляем ОДИН КОНТАКТ (АСИНХРОННЫЙ вариант)
 async function removeContact(contactId) {
     try {
-        // const data = await fs.readFile('./package.json', 'utf8'); //! +++
-        // console.log("JSON.parse(data).devDependencies:".yellow, JSON.parse(data).devDependencies); //! +++ { nodemon: '^2.0.20', npx: '^10.2.2' }
-        // console.log("JSON.parse(data):".yellow, JSON.parse(data)); //! +++ РАБОТАЕТ!!!
-
-        //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
-        const data = await fs.readFile(contactsPath, 'utf8');
-        console.log("contacts.json:\n".yellow, data.blue); //!
-        console.log("typeof (contacts.json):".yellow, (typeof data).red); //!
-        lineBreak();
-
-        //! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
-        const contactsParse = JSON.parse(data);
-        // console.log("contactsParse:".yellow, contactsParse); //!
-        console.log("СПИСОК КОНТАКТОВ:".yellow); //!
-        console.table(contactsParse); //!
-        console.log("typeof (СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
-        lineBreak();
-
-        //? ПАРСИМ и КОНСОЛИМ только один элемент МАССИВА (по индексу = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
-        // console.log("contactId:", contactId);
-        // const contactsParseByContactId = JSON.parse(data)[contactId - 1];
-        // console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
-        // console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
+        // //! Получаем и КОНСОЛИМ значение файла contacts.json ==> СТРОКА (ВСЕ КОНТАКТЫ)
+        // const data = await fs.readFile(contactsPath, 'utf8');
+        // console.log("contacts.json:\n".yellow, data.blue); //!
+        // console.log("typeof (contacts.json):".yellow, (typeof data).red); //!
         // lineBreak();
+
+        // //! ПАРСИМ и КОНСОЛИМ значение файла contacts.json ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ)
+        // const contactsParse = JSON.parse(data);
+        // // console.log("contactsParse:".yellow, contactsParse); //!
+        // console.log("СПИСОК КОНТАКТОВ:".yellow); //!
+        // console.table(contactsParse); //!
+        // console.log("typeof (СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
+        // lineBreak();
+
+        // // ? ПАРСИМ и КОНСОЛИМ только один элемент МАССИВА (по индексу = contactId) и получаем из contacts.json ==> ОДИН ОБЪЕКТ
+        // // console.log("contactId:", contactId);
+        // // const contactsParseByContactId = JSON.parse(data)[contactId - 1];
+        // // console.log("contactsParseByContactId:".yellow, contactsParseByContactId); //!
+        // // console.log("typeof contactsParseByContactId:".yellow, (typeof contactsParseByContactId).red);
+        // // lineBreak();
+
+        //! Вызываем ф-цию listContacts()  ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ) + все КОНСОЛИ
+        const contactsParse = await listContacts();
 
         //!!! ДОСТАЕМ и КОНСОЛИМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ c ОДНИМ ОБЪЕКТОМ
         const contactsParseByIdArr = contactsParse.filter(contact => String(contact.id) === String(contactId));
         // const contactsParseById = contactsParseByIdArr[0]; 
         // console.log("Этот контакт будет удален:".yellow, contactsParseById); //!+++
-        console.log("Этот контакт будет удален:".yellow); //!+++
+        console.log(`Этот КОНТАКТ №_${contactId} будет удален:`.yellow); //!+++
         console.table(contactsParseByIdArr); //!+++
         lineBreak();
 
