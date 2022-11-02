@@ -13,7 +13,7 @@ const {
 } = require("./contacts");
 
 //! Шаг 4-1 ==> Импорт пакета yargs
-const argv = require("yargs").argv;
+// const argv = require("yargs").argv;
 
 //! Шаг 4-2 ==> Импорт модуля commander 
 const { Command } = require("commander");
@@ -37,63 +37,6 @@ const { Command } = require("commander");
 
 
 //! Шаг 4-1 ==> Функция invokeAction() для удобного парса аргументов командной строки
-// TODO: рефакторить
-(function invokeAction({ action, id, name, email, phone }) {
-    switch (action) {
-        case "list":
-            console.log("action --> list".green); //!
-            lineBreak();
-            listContacts();
-            break;
-
-        case "get":
-            console.log("action --> get".blue); //!
-            lineBreak();
-            getContactById(id);
-            break;
-
-        case "add":
-            console.log("action --> add".yellow); //!
-            lineBreak();
-            addContact(name, email, phone);
-            break;
-
-        case "remove":
-            console.log("action --> remove".red); //!
-            lineBreak();
-            removeContact(id);
-            break;
-
-        default:
-            console.warn("\x1B[31m Unknown action type!");
-            lineBreak();
-    }
-})(argv); //? Самовызывающееся функциональное выражение (IIFE)
-
-console.log("argv:".yellow, argv); //!
-lineBreak();
-
-// invokeAction(argv); //! парсим аргументы командной строки
-// -----------------------------------------------------------------------------
-
-
-
-
-
-//! Шаг 4-2 ==> Используем модуль commander для парсинга аргументов командной строки
-// const program = new Command();
-
-// program
-//     .option("-a, --action <type>", "choose action")
-//     .option("-i, --id <type>", "user id")
-//     .option("-n, --name <type>", "user name")
-//     .option("-e, --email <type>", "user email")
-//     .option("-p, --phone <type>", "user phone");
-
-// program.parse(process.argv);
-
-// const argv = program.opts();
-
 // TODO: рефакторить
 // (function invokeAction({ action, id, name, email, phone }) {
 //     switch (action) {
@@ -131,6 +74,63 @@ lineBreak();
 // lineBreak();
 
 // // invokeAction(argv); //! парсим аргументы командной строки
+// -----------------------------------------------------------------------------
+
+
+
+
+
+//! Шаг 4-2 ==> Используем модуль commander для парсинга аргументов командной строки
+const program = new Command();
+
+program
+    .option("-a, --action <type>", "choose action")
+    .option("-i, --id <type>", "user id")
+    .option("-n, --name <type>", "user name")
+    .option("-e, --email <type>", "user email")
+    .option("-p, --phone <type>", "user phone");
+
+program.parse(process.argv);
+
+const argv = program.opts();
+
+// TODO: рефакторить
+(function invokeAction({ action, id, name, email, phone }) {
+    switch (action) {
+        case "list":
+            console.log("action --> list".green); //!
+            lineBreak();
+            listContacts();
+            break;
+
+        case "get":
+            console.log("action --> get".blue); //!
+            lineBreak();
+            getContactById(id);
+            break;
+
+        case "add":
+            console.log("action --> add".yellow); //!
+            lineBreak();
+            addContact(name, email, phone);
+            break;
+
+        case "remove":
+            console.log("action --> remove".red); //!
+            lineBreak();
+            removeContact(id);
+            break;
+
+        default:
+            console.warn("\x1B[31m Unknown action type!");
+            lineBreak();
+    }
+})(argv); //? Самовызывающееся функциональное выражение (IIFE)
+
+console.log("argv:".yellow, argv); //!
+lineBreak();
+
+// invokeAction(argv); //! парсим аргументы командной строки
 // -----------------------------------------------------------------------------
 
 
