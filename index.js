@@ -156,6 +156,7 @@ lineBreak();
 //* node index.js --action add --name Mango3 --email mango3@gmail.com --phone 333-33-33
 //* node index.js --action add --name Mango4 --email mango4@gmail.com --phone 444-44-44
 //* node index.js --action add --name Mango5 --email mango5@gmail.com --phone 555-55-55
+//* node index.js --action add --name Mango7 --email mango7@gmail.com --phone 777-77-77
 
 
 //? Удаляем контакт
