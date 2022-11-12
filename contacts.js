@@ -32,12 +32,13 @@ async function creatingNewJSONfile(contactsParseNew) {
     console.log("typeof (НОВЫЙ JSON):".yellow, (typeof contactsParseNewStringifyNewJSON).red); //!
     lineBreak();
 
-    //!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
-    // await fs.writeFile('./db/contactsNEW.json', contactsParseNewStringifyNewJSON, 'utf8'); //* - Записываем НОВЫЙ JSON в НОВЫЙ файл
+    //!  Записываем НОВЫЙ JSON в файл contacts.json и получаем  ==> НОВЫЙ contacts.json
+    // await fs.writeFile('./db/contactsNEW.json', contactsParseNewStringifyNewJSON, 'utf8'); //* - Записываем НОВЫЙ JSON в файл contacts.json
     await fs.writeFile(contactsPath, contactsParseNewStringifyNewJSON, 'utf8'); //? - Записываем НОВЫЙ JSON в файл contacts.json
     // const contactsNEWjson = await fs.readFile('./db/contactsNEW.json', 'utf8'); //* - Читаем НОВЫЙ JSON файл
     const contactsNEWjson = await fs.readFile(contactsPath, 'utf8'); //? - Читаем файл contacts.json
-    console.log("НОВЫЙ JSON-файл --> contacts.json:\n".yellow, contactsNEWjson.blue); //!
+    console.log("НОВЫЙ contacts.json:\n".yellow, contactsNEWjson.blue); //!
+    console.log("typeof (НОВЫЙ contacts.json):".yellow, (typeof contactsNEWjson).red); //!
     lineBreak();
 };
 //* _________________________________________________________________________________________________________________
@@ -214,7 +215,7 @@ async function removeContact(contactId) {
         //! Вызываем ф-цию creatingNewJSONfile()  ==>
         //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
         //!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
-        creatingNewJSONfile(contactsParseNew);
+        await creatingNewJSONfile(contactsParseNew);
 
         // //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
         // const contactsParseNewStringifyNewJSON = JSON.stringify(contactsParseNew);
@@ -286,7 +287,7 @@ async function addContact(name, email, phone) {
         //! Вызываем ф-цию creatingNewJSONfile()  ==>
         //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
         //!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
-        creatingNewJSONfile(contactsParseNew);
+        await creatingNewJSONfile(contactsParseNew);
 
 
         // //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON

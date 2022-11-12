@@ -99,30 +99,34 @@ program.parse(process.argv);
 const argv = program.opts();
 
 // TODO: рефакторить
-(function invokeAction({ action, id, name, email, phone }) {
+(async function invokeAction({ action, id, name, email, phone }) {
     switch (action) {
         case "list":
             console.log("action --> list".green); //!
             lineBreak();
-            listContacts();
+            await listContacts();
+            console.log("END".green); //!
             break;
 
         case "get":
             console.log("action --> get".blue); //!
             lineBreak();
-            getContactById(id);
+            await getContactById(id);
+            console.log("END".blue); //!
             break;
 
         case "remove":
             console.log("action --> remove".red); //!
             lineBreak();
-            removeContact(id);
+            await removeContact(id);
+            console.log("END".red); //!
             break;
 
         case "add":
             console.log("action --> add".yellow); //!
             lineBreak();
-            addContact(name, email, phone);
+            await addContact(name, email, phone);
+            console.log("END".yellow); //!
             break;
 
         default:
@@ -153,12 +157,14 @@ lineBreak();
 //? Получаем контакт по id
 //! get
 //* node index.js --action get --id 5
+//* node index.js --action get --id 38ezj9jwl9ynfm5g
 
 
 //todo 3:
 //? Удаляем контакт
 //! remove
 //* node index.js --action remove --id 3
+//* node index.js --action remove --id 38ezj2kglaeh66iy
 
 
 //todo 4:
@@ -170,3 +176,4 @@ lineBreak();
 //* node index.js --action add --name Mango4 --email mango4@gmail.com --phone 444-44-44
 //* node index.js --action add --name Mango5 --email mango5@gmail.com --phone 555-55-55
 //* node index.js --action add --name Mango7 --email mango7@gmail.com --phone 777-77-77
+//* node index.js --action add --name Mango9 --email mango9@gmail.com --phone 999-99-99
