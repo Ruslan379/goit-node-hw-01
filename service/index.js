@@ -1,3 +1,5 @@
 const lineBreak = require("./makeLineBreak")
 
-module.exports = lineBreak;
+module.exports = {
+    lineBreak
+};
