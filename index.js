@@ -3,14 +3,18 @@
 
 require('colors');
 
+
+
 //! Шаг 3 ==> Импорт модуля contacts.js
 const {
     listContacts,
     getContactById,
     removeContact,
-    addContact,
-    lineBreak
+    addContact
+    // lineBreak
 } = require("./contacts");
+
+const { lineBreak } = require("./service");
 
 //! Шаг 4-1 ==> Импорт пакета yargs
 // const argv = require("yargs").argv;
