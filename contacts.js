@@ -89,7 +89,7 @@ async function listContacts() {
         return contactsParse;
 
     } catch (error) {
-        console.error('Error read file contacts.json:'.red, error.red);
+        console.error(error.message.red);
         lineBreak();
     }
 }
@@ -154,15 +154,29 @@ async function getContactById(contactId) {
         const contactsParse = await listContacts();
 
         //!!! ДОСТАЕМ и КОНСОЛИМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ c ОДНИМ ОБЪЕКТОМ
-        const contactsParseByIdArr = contactsParse.filter(contact => String(contact.id) === String(contactId));
+        const contactsParseByIdArr = contactsParse.filter(contact => String(contact.id) === String(contactId)); //* - это МАССИВ с одним ОБЪЕКТОМ
+        if (contactsParseByIdArr.length === 0) {
+            console.log("Нет контакта с таким ID:".yellow, contactId.red); //!+++
+            lineBreak();
+            return;
+        }
+
+        // const contactsParseByIdArr = contactsParse.find(contact => String(contact.id) === String(contactId)); //? - это ОБЪЕКТ
+        // if (!contactsParseByIdArr) {
+        //     console.log("Нет контакта с таким ID:".yellow, contactId.red); //!+++
+        //     lineBreak();
+        //     return;
+        // }
+
         // const contactsParseById = contactsParseByIdArr[0]; 
         // console.log("Этот контакт будет удален:".yellow, contactsParseById); //!+++
         console.log(`КОНТАКТ №_${contactId}:`.yellow); //!+++
         console.table(contactsParseByIdArr); //!+++
+        // console.log(contactsParseByIdArr); //!+++
         lineBreak();
 
     } catch (error) {
-        console.error('Error read file contacts.json:'.red, error.red);
+        console.error(error.message.red);
         lineBreak();
     }
 }
@@ -232,7 +246,7 @@ async function removeContact(contactId) {
         // lineBreak();
 
     } catch (error) {
-        console.error('Error read file contacts.json:'.red, error.red);
+        console.error(error.message.red);
         lineBreak();
     }
 }
@@ -305,7 +319,7 @@ async function addContact(name, email, phone) {
         // lineBreak();
 
     } catch (error) {
-        console.error('Error read file contacts.json:'.red, error.red);
+        console.error(error.message.red);
         lineBreak();
     }
 };
