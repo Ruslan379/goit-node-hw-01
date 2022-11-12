@@ -113,16 +113,16 @@ const argv = program.opts();
             getContactById(id);
             break;
 
-        case "add":
-            console.log("action --> add".yellow); //!
-            lineBreak();
-            addContact(name, email, phone);
-            break;
-
         case "remove":
             console.log("action --> remove".red); //!
             lineBreak();
             removeContact(id);
+            break;
+
+        case "add":
+            console.log("action --> add".yellow); //!
+            lineBreak();
+            addContact(name, email, phone);
             break;
 
         default:
@@ -143,16 +143,25 @@ lineBreak();
 
 //! Шаг 5 ==> Запускаем команды в терминале  ===> CLI
 
+//todo 1:
 //? Получаем и выводим весь список контактов в виде таблицы(console.table)
 //! list
 //* node index.js --action list
 
 
+//todo 2:
 //? Получаем контакт по id
 //! get
 //* node index.js --action get --id 5
 
 
+//todo 3:
+//? Удаляем контакт
+//! remove
+//* node index.js --action remove --id 3
+
+
+//todo 4:
 //? Добавялем контакт
 //! add
 //* node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
@@ -161,8 +170,3 @@ lineBreak();
 //* node index.js --action add --name Mango4 --email mango4@gmail.com --phone 444-44-44
 //* node index.js --action add --name Mango5 --email mango5@gmail.com --phone 555-55-55
 //* node index.js --action add --name Mango7 --email mango7@gmail.com --phone 777-77-77
-
-
-//? Удаляем контакт
-//! remove
-//* node index.js --action remove --id 3

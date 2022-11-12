@@ -1,7 +1,8 @@
 require('colors');
 
 // const fs = require('fs'); //? АСИНХРОННЫЙ вариант-1
-const fs = require('fs').promises; //! АСИНХРОННЫЙ вариант-2
+// const fs = require('fs').promises; //! АСИНХРОННЫЙ вариант-2
+const fs = require("fs/promises"); //! АСИНХРОННЫЙ вариант-2
 
 const path = require('path');
 
