@@ -291,17 +291,23 @@ async function addContact(name, email, phone) {
         const contactsParse = await listContacts();
 
         //!!! Добавляем в МАССИВ ОБЪЕКТОВ НОВЫЙ КОНТАКТ(newContact) ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
-        const contactsParseNew = [...contactsParse, newContact];
+        const contactsParseNew = [...contactsParse, newContact]; //! 1-й вариант
+        // contactsParse.push(newContact); //! 2-й вариант 
+        // console.log("contactsParse:", contactsParse); //!+++ 2-й вариант (проверка)
+
         // console.log("НОВЫЙ СПИСОК КОНТАКТОВ:".yellow, contactsParseNew); //!+++
         console.log("НОВЫЙ СПИСОК КОНТАКТОВ:".yellow); //!+++
-        console.table(contactsParseNew); //!+++
-        console.log("typeof (НОВЫЙ СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
+        console.table(contactsParseNew); //!+++ 1-й вариант
+        console.log("typeof (НОВЫЙ СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParseNew).red); //! 1-й вариант
+        // console.table(contactsParse); //!+++ //! 2-й вариант 
+        // console.log("typeof (НОВЫЙ СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //! 2-й вариант 
         lineBreak();
 
         //! Вызываем ф-цию creatingNewJSONfile()  ==>
         //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
         //!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
-        await creatingNewJSONfile(contactsParseNew);
+        await creatingNewJSONfile(contactsParseNew); //!+++ 1-й вариант
+        // await creatingNewJSONfile(contactsParse); //!+++ 2-й вариант
 
 
         // //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
