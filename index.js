@@ -151,21 +151,21 @@ lineBreak();
 //? Получаем контакт по id
 //! get
 //* node index.js --action get --id 5
-//* node index.js --action get --id 38ezj9jwl9ynfm5g
+//* node index.js --action get --id 38ezja2olafpsng4
 
 
 //todo 3:
 //? Удаляем контакт
 //! remove
 //* node index.js --action remove --id 3
-//* node index.js --action remove --id 6979a867-1aac-4a38-8f21-b7b2aec59227
+//* node index.js --action remove --id 38ezja2olafpsng4
 
 
 //todo 4:
 //? Добавялем контакт
 //! add
-//* node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22
-//* node index.js --action add --name Mango2 --email mango2@gmail.com --phone 222-11-11
+//* node index.js --action add --name Mango1 --email mango1@gmail.com --phone 111-11-11
+//* node index.js --action add --name Mango2 --email mango2@gmail.com --phone 222-22-22
 //* node index.js --action add --name Mango3 --email mango3@gmail.com --phone 333-33-33
 //* node index.js --action add --name Mango4 --email mango4@gmail.com --phone 444-44-44
 //* node index.js --action add --name Mango5 --email mango5@gmail.com --phone 555-55-55
