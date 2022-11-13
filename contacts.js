@@ -10,6 +10,7 @@ const path = require('path');
 // const nanoid = require('nanoid');
 
 const uniqid = require('uniqid');
+const { v4 } = require('uuid');
 
 const { lineBreak } = require("./service");
 
@@ -26,7 +27,7 @@ const { lineBreak } = require("./service");
 //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
 //!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
 async function creatingNewJSONfile(contactsParseNew) {
-    //!  Преобразовываем НОВЫЙ МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
+    //!  Преобразовываем НОВЫЙ  МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
     const contactsParseNewStringifyNewJSON = JSON.stringify(contactsParseNew);
     console.log("НОВЫЙ JSON:\n".yellow, contactsParseNewStringifyNewJSON.gray); //!
     console.log("typeof (НОВЫЙ JSON):".yellow, (typeof contactsParseNewStringifyNewJSON).red); //!
@@ -266,7 +267,8 @@ async function addContact(name, email, phone) {
         //! Создаем НОВЫЙ КОНТАКТ ==> newContact
         const newContact = {
             // id: Date.now(),
-            id: uniqid(),
+            // id: uniqid(),
+            id: v4(),
             name,
             email,
             phone

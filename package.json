@@ -19,6 +19,7 @@
     "morgan": "^1.10.0",
     "nanoid": "^4.0.0",
     "uniqid": "^5.4.0",
+    "uuid": "^9.0.0",
     "yargs": "^17.6.0"
   },
   "devDependencies": {
