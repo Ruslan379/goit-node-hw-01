@@ -9,8 +9,8 @@ const path = require('path');
 // import { nanoid } from 'nanoid';
 // const nanoid = require('nanoid');
 
-const uniqid = require('uniqid');
 const { v4 } = require('uuid');
+const uniqid = require('uniqid');
 
 const { lineBreak } = require("./service");
 
@@ -264,11 +264,14 @@ async function removeContact(contactId) {
 //! 4: Добавляем КОНТАКТ (АСИНХРОННЫЙ вариант-2)
 async function addContact(name, email, phone) {
     try {
+        //! Вызываем ф-цию listContacts()  ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ) + все КОНСОЛИ
+        const contactsParse = await listContacts();
+
         //! Создаем НОВЫЙ КОНТАКТ ==> newContact
         const newContact = {
             // id: Date.now(),
-            // id: uniqid(),
-            id: v4(),
+            // id: v4(),
+            id: uniqid(),
             name,
             email,
             phone
@@ -295,8 +298,8 @@ async function addContact(name, email, phone) {
         // console.log("typeof (СПИСОК КОНТАКТОВ):".yellow, (typeof contactsParse).red); //!
         // lineBreak();
 
-        //! Вызываем ф-цию listContacts()  ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ) + все КОНСОЛИ
-        const contactsParse = await listContacts();
+        // не здесь - ВНАЧАЛЕ!!! //! Вызываем ф-цию listContacts()  ==> МАССИВ ОБЪЕКТОВ (ВСЕ КОНТАКТЫ) + все КОНСОЛИ
+        // const contactsParse = await listContacts();
 
         //!!! Добавляем в МАССИВ ОБЪЕКТОВ НОВЫЙ КОНТАКТ(newContact) ==> НОВЫЙ МАССИВ ОБЪЕКТОВ
         const contactsParseNew = [...contactsParse, newContact]; //! 1-й вариант
