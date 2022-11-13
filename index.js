@@ -1,9 +1,4 @@
-// const { gameGuessNumber } = require("./guess-the-number");
-// gameGuessNumber();
-
 require('colors');
-
-
 
 //! Шаг 3 ==> Импорт модуля contacts.js
 const {
@@ -11,7 +6,6 @@ const {
     getContactById,
     removeContact,
     addContact
-    // lineBreak
 } = require("./contacts");
 
 const { lineBreak } = require("./service");
