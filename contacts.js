@@ -211,7 +211,13 @@ async function removeContact(contactId) {
         const contactsParse = await listContacts();
 
         //!!! ДОСТАЕМ и КОНСОЛИМ только один элемент МАССИВА (по id = contactId) и получаем  ==> НОВЫЙ МАССИВ c ОДНИМ ОБЪЕКТОМ
-        const contactsParseByIdArr = contactsParse.filter(contact => String(contact.id) === String(contactId));
+        const contactsParseByIdArr = contactsParse.filter(contact => String(contact.id) === String(contactId)); //* - это МАССИВ с одним ОБЪЕКТОМ
+        if (contactsParseByIdArr.length === 0) {
+            console.log("Нет контакта с таким ID:".yellow, contactId.red); //!+++
+            lineBreak();
+            return;
+        }
+
         // const contactsParseById = contactsParseByIdArr[0]; 
         // console.log("Этот контакт будет удален:".yellow, contactsParseById); //!+++
         console.log(`Этот КОНТАКТ №_${contactId} будет удален:`.yellow); //!+++
