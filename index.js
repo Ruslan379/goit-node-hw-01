@@ -158,7 +158,7 @@ lineBreak();
 //? Удаляем контакт
 //! remove
 //* node index.js --action remove --id 3
-//* node index.js --action remove --id 38ezj6oclaglee4j
+//* node index.js --action remove --id 38ezjacglbz7wxvb
 
 
 //todo 4:

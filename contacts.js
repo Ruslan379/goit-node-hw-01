@@ -162,7 +162,8 @@ async function addContact(name, email, phone) {
 //!  Записываем НОВЫЙ JSON в файл и получаем  ==> НОВЫЙ JSON - файл
 async function creatingNewJSONfile(contactsParseNew) {
     //!  Преобразовываем НОВЫЙ  МАССИВ ОБЪЕКТОВ в JSON и получаем  ==> НОВЫЙ JSON
-    const contactsParseNewStringifyNewJSON = JSON.stringify(contactsParseNew);
+    // const contactsParseNewStringifyNewJSON = JSON.stringify(contactsParseNew);
+    const contactsParseNewStringifyNewJSON = JSON.stringify(contactsParseNew, null, 2);
     console.log("НОВЫЙ JSON:\n".yellow, contactsParseNewStringifyNewJSON.gray); //!
     console.log("typeof (НОВЫЙ JSON):".yellow, (typeof contactsParseNewStringifyNewJSON).red); //!
     lineBreak();
